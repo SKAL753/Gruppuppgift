@@ -1,5 +1,4 @@
 def validate_input(user_input): 
-        user_input = user_input.replace(" ", "")
         user_input_lst = list(user_input)
         if len(user_input_lst) == 4:
             for item in user_input_lst:
@@ -15,18 +14,21 @@ def validate_input(user_input):
 def get_input(line):
     while True:
         user_input = input(line)
+        user_input = user_input.replace(" ", "")
         if validate_input(user_input):
-            pass
+            return user_input
 
 def write_output():
-    pass
+    print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
+    for i in range(12, 0, -1):
+        print(f"{i:>2}{".":<20}{"":<20}{""}\n")
 
-def test_validate_input():
-    print(validate_input("1234"))
-    print(validate_input("123 4"))
-    print(validate_input("12 34"))
-    print(validate_input("1a34"))
-    print(validate_input("134"))
-    print(validate_input("12345"))
+def write_welcome():
+    print("Välkommen till Mastermind!")
+    print("Du ska gissa en fyrsiffrig kod med siffror mellan 1 och 6.")
+    print("Du har 12 försök på dig att gissa koden.")
+    print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
+    print("Lycka till!")
 
-test_validate_input()
+
+write_output()
