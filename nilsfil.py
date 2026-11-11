@@ -3,8 +3,8 @@ import random
 
 code = random.sample(["1", "2", "3", "4","5","6"], 4)
 
-print("yo dags att spela")
-print("gissa koden med 4 siffror 1, 2, 3, 4")
+print("Dags att spela mastermind med siffor!")
+print("Gissa koden med 4 siffror: 1, 2, 3, 4, 5, 6")
 
 for i in range(10):
     guess = input("gissa: ").upper()
@@ -25,5 +25,5 @@ for i in range(10):
         print("rätt pos:", correct)
         print("rätt siffra:", count)
 else:
-    print("du förlorade!")
-    print("koden va:", "".join(code))
+    print("Du förlorade.")
+    print("Koden var:", "".join(code))
