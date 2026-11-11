@@ -20,3 +20,17 @@ if vilket_ord in words:
     attempts = 9
 
     print("\nGissa bokstäverna i ordet!")
+
+
+    while attempts > 0:
+        hidden_word=""
+
+        for letter in word:
+            if letter in guessed:
+                hidden_word += letter + " "
+            else:
+                hidden_word += "_ "
+
+        print("\nOrdet: ", hidden_word)
+        print("försök kvar: ", attempts)
+        print("fel gissade bokstäver: ", (wrong))
