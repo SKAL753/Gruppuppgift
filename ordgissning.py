@@ -34,3 +34,23 @@ if vilket_ord in words:
         print("\nOrdet: ", hidden_word)
         print("försök kvar: ", attempts)
         print("fel gissade bokstäver: ", (wrong))
+
+
+
+gissning = input("Gissa en bokstav: ").upper()
+
+if len(guessning) != 1 or not gissning.isalpha():
+    print("Vänligen gissa en enda bokstav.")
+    continue
+
+if gissning in guessed or gissning in wrong:
+    print("Du har redan gissat den bokstaven.")
+    continue
+
+if gissning in word:
+    guessed.append(gissning)
+    print("Rätt gissat!")
+else:
+    wrong.append(gissning)
+    attempts -= 1
+    print("Fel gissat!")
