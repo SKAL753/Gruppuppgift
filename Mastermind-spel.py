@@ -18,10 +18,13 @@ def get_input(line):
         if validate_input(user_input):
             return user_input
 
-def write_output():
+def write_output(guesses, feedback):
     print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
     for i in range(12, 0, -1):
-        print(f"{i:>2}{".":<20}{"":<20}{""}\n")
+        if guesses and feedback and i <= len(guesses):
+            print(f"{i:>2}{".":<20}{guesses[i-1]:<20}{feedback[i-1]}\n")
+        else:
+            print(f"{i:>2}{".":<20}{"":<20}{""}\n")
 
 def write_welcome():
     print("Välkommen till Mastermind!")
@@ -30,5 +33,7 @@ def write_welcome():
     print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
     print("Lycka till!")
 
+guesses = ["1234", "4321", "1111"]
+feedback = [" ✔ ", " ☐ ", " ✔ "]
+write_output(guesses, feedback)
 
-write_output()
