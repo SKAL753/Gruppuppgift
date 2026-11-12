@@ -15,13 +15,16 @@ def get_input(line):
         user_input = input(line)
         user_input = user_input.replace(" ", "")
         if validate_input(user_input):
-            return user_input
+            lst_user_input = list(user_input)
+            lst_user_input = [int(number) for number in lst_user_input]
+            return lst_user_input
 
 def write_output(guesses, feedback):
     print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
     for i in range(12, 0, -1):
         if guesses and feedback and i <= len(guesses):
-            print(f"{i:>2}{".":<20}{guesses[i-1]:<20}{feedback[i-1]}\n")
+            guess = "".join(map(str, guesses[i-1]))
+            print(f"{i:>2}{'.':<20}{guess:<20}{" ".join(feedback[i-1])}\n")
         else:
             print(f"{i:>2}{".":<20}{"":<20}{""}\n")
 
@@ -31,6 +34,12 @@ def write_welcome():
     print("Du har 12 försök på dig att gissa koden.")
     print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
     print("Lycka till!")
+
+def write_win_message():
+    print("Grattis du gissade rätt!")
+
+def write_loss_message():
+    print("Du förlorade, bättre lycka nästa gång!")
 
 def create_number():
     number = []
@@ -53,11 +62,27 @@ def compare_numbers(correct_number, user_guess):
             remaining.remove(digit)
 
     return feedback
-            
 
-guesses = ["1234", "4321", "1111"]
-feedback = [" ✔ ", " ☐ ", " ✔ "]
-write_output(guesses, feedback)
-print(create_number())
-print(compare_numbers([1,2,3,4], [1,4,3,2]))
+def check_win(correct_number, user_guess):
+    return correct_number == user_guess
+
+def main():
+    amount_guesses = 0
+    guesses = []
+    all_feedback = []
+    write_welcome()
+    correct_number = create_number()
+    while amount_guesses < 12:
+        user_guess = get_input("Skriv in din gissning\n> ")
+        guesses.append(user_guess)
+        feedback = compare_numbers(correct_number, user_guess)
+        all_feedback.append(feedback)
+        write_output(guesses, all_feedback)
+        
+        
+        
+
+
+if __name__ == "__main__":
+    main()
 
