@@ -38,10 +38,26 @@ def create_number():
         number.append(random.randint(1,6))
     return number
 
-def compare_numbers():
-    pass
+def compare_numbers(correct_number, user_guess):
+    feedback = []
+    remaining = correct_number.copy()
+
+    for i, digit in enumerate(user_guess):
+        if digit == correct_number[i]:
+            feedback.append("✔")
+            remaining.remove(digit)
+
+    for digit in user_guess:
+        if digit in remaining:
+            feedback.append("☐")
+            remaining.remove(digit)
+
+    return feedback
+            
 
 guesses = ["1234", "4321", "1111"]
 feedback = [" ✔ ", " ☐ ", " ✔ "]
 write_output(guesses, feedback)
+print(create_number())
+print(compare_numbers([1,2,3,4], [1,4,3,2]))
 
