@@ -20,6 +20,7 @@ while True:
         repeat = int(input("\nHur många omgångar vill du köra? ---> "))
         break
     except ValueError:
+        print("Skriv en giltig siffra.")
         continue
 #spel loopen
 while True:
@@ -53,7 +54,14 @@ while True:
     print(f"Du fick {points} poäng\n Python311 fick {cpupoints} poäng\n")
     play_again = input("Vill du spela igen? J/N ---> ").lower()
     if play_again in ["ja", "j"]:
-        repeat = int(input("\nHur många omgångar vill du köra? ---> "))
+        while True:
+            try:
+                repeat = int(input("\nHur många omgångar vill du köra? ---> "))
+                break
+            except ValueError:
+                print("Skriv en giltig siffra.")
+                
+                continue
         continue
     else:
         break
