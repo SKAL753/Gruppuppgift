@@ -1,13 +1,13 @@
-ordlista = {
-    1: ["ö", "å", "ä", "i", "o", "a", "e", "u", "y"],
 
-    2: ["ab", "ad", "ag", "al", "an", "ar", "as", "av", "ax", "bo",
+words_1= ["ö", "å", "ä", "i", "o", "a", "e", "u", "y"],
+
+words_2=["ab", "ad", "ag", "al", "an", "ar", "as", "av", "ax", "bo",
         "by", "då", "de", "du", "dö", "en", "er", "fe", "ge", "gå",
         "ha", "he", "hi", "ho", "hu", "i", "ja", "jo", "ju", "ko",
         "le", "lo", "nu", "ny", "nå", "om", "os", "på", "ro", "sa",
         "se", "si", "so", "ta", "te", "ty", "ut", "va", "vi", "åh"],
 
-    3: ["apa", "arm", "bad", "bak", "bal", "bar", "ben", "bil", "bio",
+words_3=["apa", "arm", "bad", "bak", "bal", "bar", "ben", "bil", "bio",
         "bit", "bok", "bor", "bra", "bur", "dag", "dam", "del", "dem",
         "den", "det", "djur", "dom", "dra", "duk", "eko", "eld", "ele",
         "era", "ett", "fan", "far", "fel", "fin", "får", "gas", "gav",
@@ -23,7 +23,7 @@ ordlista = {
         "ung", "ute", "vad", "var", "vas", "vat", "vet", "vin", "vis",
         "väg", "vän", "yta", "zon"],
 
-    4: ["abba", "akta", "alla", "anda", "anka", "area", "arma", "aspa",
+words_4= ["abba", "akta", "alla", "anda", "anka", "area", "arma", "aspa",
         "baka", "balk", "band", "bank", "barn", "bast", "bete", "bild",
         "bind", "blad", "blod", "blom", "blås", "bord", "bror", "bröd",
         "bunt", "burk", "buss", "byte", "bära", "bäst", "dans", "data",
@@ -53,7 +53,7 @@ ordlista = {
         "villa", "vind", "vink", "visa", "viss", "väder", "vägen", "vänta",
         "öken", "ölet"],
 
-    5: ["arbete", "aktie", "andas", "ankare", "armé", "avtal", "backa",
+words_5= ["arbete", "aktie", "andas", "ankare", "armé", "avtal", "backa",
         "bageri", "balans", "bana", "banka", "banka", "banan", "barna",
         "bedöm", "beröm", "besök", "betala", "betyg", "bilda", "bingo",
         "bland", "blåsa", "borta", "botten", "brant", "bredd", "brevs",
@@ -100,7 +100,7 @@ ordlista = {
         "virka", "visst", "väcka", "väggen", "väldigt", "vänta", "växel",
         "väska", "ytter", "öppet"],
 
-    6: ["absolut", "addera", "adress", "aktuell", "alltid", "ananas",
+words_6= ["absolut", "addera", "adress", "aktuell", "alltid", "ananas",
         "använd", "arbete", "artist", "avdrag", "avsnitt", "bakgrund",
         "balkong", "batteri", "bedöma", "behålla", "berätta", "beslut",
         "bestäm", "betala", "bibliotek", "blanda", "blomma", "bostad",
@@ -145,7 +145,7 @@ ordlista = {
         "verktyg", "viktig", "vänner", "väldigt", "världen", "växter",
         "återstår", "ändring", "äntligen", "öppning"],
 
-    7: ["abborre", "adoption", "affärsidé", "allmänhet", "anledning",
+words_7=["abborre", "adoption", "affärsidé", "allmänhet", "anledning",
         "ansikte", "apparat", "arbete", "arkitektur", "avdelning",
         "avstånd", "bakelse", "balansgång", "barnvagn", "bekräfta",
         "belöning", "berömma", "beskriva", "beställa", "betydelse",
@@ -192,7 +192,7 @@ ordlista = {
         "vintertid", "vänskap", "värdefull", "värdering", "återvinna",
         "ändamål", "äventyrlig", "överraska"],
 
-    8: ["absolutism", "aktivitet", "anpassning", "ansvarig", "antagande",
+words_8=["absolutism", "aktivitet", "anpassning", "ansvarig", "antagande",
         "användare", "arbetsdag", "arbetsplats", "argument", "avancerad",
         "avslutning", "bakgrund", "balanserad", "barnfamilj", "bekräftelse",
         "beskrivning", "bestämmelse", "betydelse", "biblioteket", "blomster",
@@ -235,7 +235,7 @@ ordlista = {
         "vetenskaplig", "vinterkläder", "vänlighet", "värdesätta", "återvinning",
         "äventyrslust", "övergripande"],
 
-    9: ["abonnemang", "aktiviteter", "anpassningar", "arbetsgivare",
+words_9=["abonnemang", "aktiviteter", "anpassningar", "arbetsgivare",
         "arbetsmiljö", "arbetsområde", "argumentera", "avdelningar",
         "avslutningsvis", "bakgrundsbild", "barnomsorg", "bekräftelse",
         "beslutsfattare", "beskrivningar", "bestämmelser", "bibliotekarie",
@@ -286,7 +286,7 @@ ordlista = {
         "vinterlandskap", "vänskapsband", "värderingsfråga",
         "återanvändning", "äventyrsberättelse", "överenskommelse"],
 
-    10: ["abonnemangsavgift", "aktivitetsplan", "anpassningsbar",
+words_10=["abonnemangsavgift", "aktivitetsplan", "anpassningsbar",
          "arbetsfördelning", "arbetsuppgifter", "arbetsmarknad",
          "arbetsförhållande", "argumentation", "avancerad teknik",
          "avslutningsarbete", "bakgrundsinformation", "barnuppfostran",
@@ -344,12 +344,22 @@ ordlista = {
          "vardagsförståelse", "verksamhetsutveckling", "vetenskapsområde",
          "vinterförvaring", "vänskapsrelation", "värderingssystem",
          "återvinningsstation", "äventyrsupplevelse", "överensstämmelse"]
+ordlista = {
+    1: words_1,
+    2: words_2,
+    3: words_3,
+    4: words_4,
+    5: words_5,
+    6: words_6,
+    7: words_7,
+    8: words_8,
+    9: words_9,
+    10: words_10
 }
+vilken_svårighetsgrad = input("Vilken svårighetsgrad vill du spela på? (1-10): ")
 
-vilket_ord = input("Vilket ord vill du gissa? (1-10): ")
-
-if vilket_ord in words:
-    word = words[vilket_ord]
+if vilken_svårighetsgrad.isdigit() and 1 <= int(vilken_svårighetsgrad) <= 10:
+    word = random.choice(ordlista[int(vilken_svårighetsgrad)])
     guessed = []
     wrong = []
     attempts = 9
@@ -385,14 +395,12 @@ if vilket_ord in words:
         elif gissning in word:
             guessed.append(gissning)
             print("Rätt gissat!")
-        else:
+        elif gissning not in word:
             wrong.append(gissning)
             attempts -= 1
             print("Fel gissat!")
-
     else:
         print("\nDu har slut på försök!")
         print("Rätt ord var:", word)
-
 else:
     print("Ogiltigt ord. Välj ett ord mellan 1 och 10.")
