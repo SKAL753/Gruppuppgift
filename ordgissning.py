@@ -1,5 +1,5 @@
 from ordlista import ordlista
-
+import random
 vilken_svårighetsgrad = input("Vilken svårighetsgrad vill du spela på? (1-10): ")
 
 if vilken_svårighetsgrad.isdigit() and 1 <= int(vilken_svårighetsgrad) <= 10:
