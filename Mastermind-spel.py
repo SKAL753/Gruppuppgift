@@ -67,6 +67,7 @@ def check_win(correct_number, user_guess):
     return correct_number == user_guess
 
 def main():
+    win = False
     amount_guesses = 0
     guesses = []
     all_feedback = []
@@ -75,9 +76,17 @@ def main():
     while amount_guesses < 12:
         user_guess = get_input("Skriv in din gissning\n> ")
         guesses.append(user_guess)
+        amount_guesses += 1
         feedback = compare_numbers(correct_number, user_guess)
         all_feedback.append(feedback)
         write_output(guesses, all_feedback)
+        if check_win(correct_number, user_guess):
+            won = True
+            write_win_message()
+            break
+        
+    if won == False:
+        write_loss_message()
         
         
         
