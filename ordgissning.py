@@ -1,5 +1,5 @@
 
-words = {
+words_1_bokstav = {
     "1": "Ö",
     "2": "RÅ",
     "3": "TUR",
@@ -45,12 +45,10 @@ if vilket_ord in words:
         if len(gissning) != 1 or not gissning.isalpha():
             print("Vänligen gissa en enda bokstav.")
             continue
-
-        if gissning in guessed or gissning in wrong:
+        elif gissning in guessed or gissning in wrong:
             print("Du har redan gissat den bokstaven.")
             continue
-
-        if gissning in word:
+        elif gissning in word:
             guessed.append(gissning)
             print("Rätt gissat!")
         else:
