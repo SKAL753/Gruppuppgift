@@ -1,3 +1,4 @@
+import random
 def validate_input(user_input): 
         user_input_lst = list(user_input)
         if len(user_input_lst) == 4:
@@ -32,6 +33,12 @@ def write_welcome():
     print("Du har 12 försök på dig att gissa koden.")
     print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
     print("Lycka till!")
+
+def create_number():
+    pass
+
+def compare_numbers():
+    pass
 
 guesses = ["1234", "4321", "1111"]
 feedback = [" ✔ ", " ☐ ", " ✔ "]
