@@ -10,8 +10,6 @@ def validate_input(user_input):
             return True
         return False
         
-    
-
 def get_input(line):
     while True:
         user_input = input(line)
@@ -35,7 +33,10 @@ def write_welcome():
     print("Lycka till!")
 
 def create_number():
-    pass
+    number = []
+    for i in range(4):
+        number.append(random.randint(1,6))
+    return number
 
 def compare_numbers():
     pass
