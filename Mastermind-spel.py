@@ -39,14 +39,25 @@ def write_output(guesses, feedback):
             print(f"{i:>2}{".":<20}{"":<20}{""}\n")
 
 def write_welcome():
-    print("Välkommen till Mastermind!")
-    print("Du ska gissa en fyrsiffrig kod med siffror mellan 1 och 6.")
+    print("=" * 40)
+    print("       Välkommen till Mastermind!")
+    print("=" * 40)
+
+    print("\nDu ska gissa en fyrsiffrig kod med siffror mellan 1 och 6.")
     print("Du har 12 försök på dig att gissa koden.")
-    print("Det finns två svårighetsgrader:")
+
+    print("\nSVÅRIGHETSGRADER")
+    print("-" * 20)
     print("Lätt: Koden innehåller inga upprepade siffror.")
     print("Svår: Koden kan innehålla upprepade siffror.")
-    print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
-    print("Lycka till!")
+
+    print("\nFEEDBACK")
+    print("-" * 20)
+    print("✔ = Rätt siffra på rätt plats")
+    print("☐ = Rätt siffra på fel plats")
+
+    print("\nLycka till!")
+    print("=" * 40)
 
 def write_win_message():
     print("Grattis du gissade rätt!")
