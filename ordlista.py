@@ -1,10 +1,10 @@
-words_1= ["ö", "å", "ä", "i", "o", "a", "e", "u", "y"],
+words_1= ["ö", "å", "ä", "i", "o", "a", "e", "u", "y"]
 
 words_2=["ab", "ad", "ag", "al", "an", "ar", "as", "av", "ax", "bo",
         "by", "då", "de", "du", "dö", "en", "er", "fe", "ge", "gå",
         "ha", "he", "hi", "ho", "hu", "i", "ja", "jo", "ju", "ko",
         "le", "lo", "nu", "ny", "nå", "om", "os", "på", "ro", "sa",
-        "se", "si", "so", "ta", "te", "ty", "ut", "va", "vi", "åh"],
+        "se", "si", "so", "ta", "te", "ty", "ut", "va", "vi", "åh"]
 
 words_3=["apa", "arm", "bad", "bak", "bal", "bar", "ben", "bil", "bio",
         "bit", "bok", "bor", "bra", "bur", "dag", "dam", "del", "dem",
@@ -20,7 +20,7 @@ words_3=["apa", "arm", "bad", "bak", "bal", "bar", "ben", "bil", "bio",
         "sex", "sig", "sil", "sin", "sol", "som", "sop", "sur", "söt",
         "tag", "tal", "tan", "tid", "tog", "tom", "tåg", "ugn", "ull",
         "ung", "ute", "vad", "var", "vas", "vat", "vet", "vin", "vis",
-        "väg", "vän", "yta", "zon"],
+        "väg", "vän", "yta", "zon"]
 
 words_4= ["abba", "akta", "alla", "anda", "anka", "area", "arma", "aspa",
         "baka", "balk", "band", "bank", "barn", "bast", "bete", "bild",
@@ -50,7 +50,7 @@ words_4= ["abba", "akta", "alla", "anda", "anka", "area", "arma", "aspa",
         "tema", "tidig", "till", "topp", "träd", "tror", "tryck", "tvål",
         "under", "vana", "vara", "varg", "varm", "vass", "vecka", "vila",
         "villa", "vind", "vink", "visa", "viss", "väder", "vägen", "vänta",
-        "öken", "ölet"],
+        "öken", "ölet"]
 
 words_5= ["arbete", "aktie", "andas", "ankare", "armé", "avtal", "backa",
         "bageri", "balans", "bana", "banka", "banka", "banan", "barna",
@@ -97,7 +97,7 @@ words_5= ["arbete", "aktie", "andas", "ankare", "armé", "avtal", "backa",
         "uppåt", "utmed", "uttag", "vaken", "vanlig", "vapen", "varför",
         "varje", "vatten", "vecka", "verka", "viktig", "vilja", "vinter",
         "virka", "visst", "väcka", "väggen", "väldigt", "vänta", "växel",
-        "väska", "ytter", "öppet"],
+        "väska", "ytter", "öppet"]
 
 words_6= ["absolut", "addera", "adress", "aktuell", "alltid", "ananas",
         "använd", "arbete", "artist", "avdrag", "avsnitt", "bakgrund",
@@ -142,7 +142,7 @@ words_6= ["absolut", "addera", "adress", "aktuell", "alltid", "ananas",
         "tunnel", "tydlig", "tycker", "tålamod", "uppdrag", "uppgift",
         "utbildning", "utgång", "utveckla", "vanligt", "varandra", "verklig",
         "verktyg", "viktig", "vänner", "väldigt", "världen", "växter",
-        "återstår", "ändring", "äntligen", "öppning"],
+        "återstår", "ändring", "äntligen", "öppning"]
 
 words_7=["abborre", "adoption", "affärsidé", "allmänhet", "anledning",
         "ansikte", "apparat", "arbete", "arkitektur", "avdelning",
@@ -189,7 +189,7 @@ words_7=["abborre", "adoption", "affärsidé", "allmänhet", "anledning",
         "utmaning", "utrustning", "utveckling", "utvärdera", "vackrare",
         "vardaglig", "verklighet", "verkstad", "vetenskap", "viktighet",
         "vintertid", "vänskap", "värdefull", "värdering", "återvinna",
-        "ändamål", "äventyrlig", "överraska"],
+        "ändamål", "äventyrlig", "överraska"]
 
 words_8=["absolutism", "aktivitet", "anpassning", "ansvarig", "antagande",
         "användare", "arbetsdag", "arbetsplats", "argument", "avancerad",
@@ -232,7 +232,7 @@ words_8=["absolutism", "aktivitet", "anpassning", "ansvarig", "antagande",
         "uppfinning", "upplevelse", "uppmärksam", "utbildning", "utmaningar",
         "utveckling", "utvärdering", "vardagsliv", "vardagsrum", "verksamhet",
         "vetenskaplig", "vinterkläder", "vänlighet", "värdesätta", "återvinning",
-        "äventyrslust", "övergripande"],
+        "äventyrslust", "övergripande"]
 
 words_9=["abonnemang", "aktiviteter", "anpassningar", "arbetsgivare",
         "arbetsmiljö", "arbetsområde", "argumentera", "avdelningar",
@@ -283,7 +283,7 @@ words_9=["abonnemang", "aktiviteter", "anpassningar", "arbetsgivare",
         "utmaningarna", "utvecklingsarbete", "utvärderingar",
         "vardagsrutiner", "verksamhetsplan", "vetenskapligt",
         "vinterlandskap", "vänskapsband", "värderingsfråga",
-        "återanvändning", "äventyrsberättelse", "överenskommelse"],
+        "återanvändning", "äventyrsberättelse", "överenskommelse"]
 
 words_10=["abonnemangsavgift", "aktivitetsplan", "anpassningsbar",
          "arbetsfördelning", "arbetsuppgifter", "arbetsmarknad",
