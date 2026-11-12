@@ -54,3 +54,15 @@ else:
     wrong.append(gissning)
     attempts -= 1
     print("Fel gissat!")
+
+ if all(letter in guessed for letter in word):
+            print("\nGrattis! Du gissade rätt!")
+            print("Ordet var:", word)
+            break
+
+    else:
+        print("\nDu har slut på försök!")
+        print("Rätt ord var:", word)
+
+else:
+    print("Ogiltigt ord. Välj ett ord mellan 1 och 10.")
