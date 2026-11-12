@@ -14,7 +14,13 @@ pchoice = ""
 #start på spelet
 print("Nu ska vi spela Sten, Sax eller Påse!\n\nJag är python311\n")
 user = input("Ange användarnamn ---> ")
-repeat = int(input("\nHur många omgångar vill du köra? ---> "))
+#hindrar inmatningsfel
+while True:
+    try:
+        repeat = int(input("\nHur många omgångar vill du köra? ---> "))
+        break
+    except ValueError:
+        continue
 #spel loopen
 while True:
     for i in range(repeat):
