@@ -1,4 +1,5 @@
-words={
+
+words = {
     "1": "Ö",
     "2": "RÅ",
     "3": "TUR",
@@ -10,7 +11,7 @@ words={
     "9": "ROLIGARES",
     "10": "ROLIGARESI"
 }
-vilket_ord=input("Vilket ord vill du gissa? (1-10): ")
+
 vilket_ord = input("Vilket ord vill du gissa? (1-10): ")
 
 if vilket_ord in words:
@@ -21,9 +22,8 @@ if vilket_ord in words:
 
     print("\nGissa bokstäverna i ordet!")
 
-
     while attempts > 0:
-        hidden_word=""
+        hidden_word = ""
 
         for letter in word:
             if letter in guessed:
@@ -31,34 +31,32 @@ if vilket_ord in words:
             else:
                 hidden_word += "_ "
 
-        print("\nOrdet: ", hidden_word)
-        print("försök kvar: ", attempts)
-        print("fel gissade bokstäver: ", (wrong))
+        print("\nOrdet:", hidden_word)
+        print("Försök kvar:", attempts)
+        print("Fel gissade bokstäver:", wrong)
 
-
-
-gissning = input("Gissa en bokstav: ").upper()
-
-if len(guessning) != 1 or not gissning.isalpha():
-    print("Vänligen gissa en enda bokstav.")
-    continue
-
-if gissning in guessed or gissning in wrong:
-    print("Du har redan gissat den bokstaven.")
-    continue
-
-if gissning in word:
-    guessed.append(gissning)
-    print("Rätt gissat!")
-else:
-    wrong.append(gissning)
-    attempts -= 1
-    print("Fel gissat!")
-
- if all(letter in guessed for letter in word):
+        if all(letter in guessed for letter in word):
             print("\nGrattis! Du gissade rätt!")
             print("Ordet var:", word)
             break
+
+        gissning = input("Gissa en bokstav: ").upper()
+
+        if len(gissning) != 1 or not gissning.isalpha():
+            print("Vänligen gissa en enda bokstav.")
+            continue
+
+        if gissning in guessed or gissning in wrong:
+            print("Du har redan gissat den bokstaven.")
+            continue
+
+        if gissning in word:
+            guessed.append(gissning)
+            print("Rätt gissat!")
+        else:
+            wrong.append(gissning)
+            attempts -= 1
+            print("Fel gissat!")
 
     else:
         print("\nDu har slut på försök!")
