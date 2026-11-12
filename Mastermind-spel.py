@@ -1,23 +1,33 @@
 import random
-def validate_input(user_input): 
-        user_input_lst = list(user_input)
-        if len(user_input_lst) == 4:
-            for item in user_input_lst:
-                if not item.isdigit():
-                    return False
-                if int(item) > 6 or int(item) < 1:
-                    return False
-            return True
-        return False
-        
-def get_input(line):
+from enum import Enum
+
+class InputType(Enum):
+    GUESS = 1
+    DIFFICULTY = 2
+
+def validate_input(user_input, input_type): 
+        if input_type == InputType.GUESS:
+            user_input_lst = list(user_input)
+            if len(user_input_lst) == 4:
+                for item in user_input_lst:
+                    if not item.isdigit():
+                        return False
+                    if int(item) > 6 or int(item) < 1:
+                        return False
+                return True
+            return False
+        elif input_type == InputType.DIFFICULTY:
+            if user_input == "svår" or user_input == "lätt":
+                return True
+            
+def get_input(line, input_type):
     while True:
-        user_input = input(line)
+        user_input = input(line).strip().lower()
         user_input = user_input.replace(" ", "")
-        if validate_input(user_input):
-            lst_user_input = list(user_input)
-            lst_user_input = [int(number) for number in lst_user_input]
-            return lst_user_input
+        if validate_input(user_input, input_type):
+            if input_type == InputType.GUESS:
+                return [int(number) for number in user_input]
+            return user_input
 
 def write_output(guesses, feedback):
     print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
@@ -32,6 +42,9 @@ def write_welcome():
     print("Välkommen till Mastermind!")
     print("Du ska gissa en fyrsiffrig kod med siffror mellan 1 och 6.")
     print("Du har 12 försök på dig att gissa koden.")
+    print("Det finns två svårighetsgrader:")
+    print("Lätt: Koden innehåller inga upprepade siffror.")
+    print("Svår: Koden kan innehålla upprepade siffror.")
     print("Efter varje gissning får du feedback i form av antal rätta siffror på rätt plats ( ✔ ) och antal rätta siffror på fel plats ( ☐ ).")
     print("Lycka till!")
 
@@ -41,10 +54,13 @@ def write_win_message():
 def write_loss_message():
     print("Du förlorade, bättre lycka nästa gång!")
 
-def create_number():
+def create_number(difficulty):
     number = []
-    for i in range(4):
-        number.append(random.randint(1,6))
+    if difficulty == "svår":
+        for i in range(4):
+            number.append(random.randint(1,6))
+    elif difficulty == "lätt":
+        number = random.sample(range(1,7), 4)
     return number
 
 def compare_numbers(correct_number, user_guess):
@@ -72,10 +88,11 @@ def main():
     guesses = []
     all_feedback = []
     write_welcome()
-    correct_number = create_number()
+    difficulty = get_input("Välj svårighetsgrad (lätt, svår)\n> ", InputType.DIFFICULTY)
+    correct_number = create_number(difficulty)
     print(correct_number)
     while amount_guesses < 12:
-        user_guess = get_input("Skriv in din gissning\n> ")
+        user_guess = get_input("Skriv in din gissning\n> ", InputType.GUESS)
         guesses.append(user_guess)
         amount_guesses += 1
         feedback = compare_numbers(correct_number, user_guess)
