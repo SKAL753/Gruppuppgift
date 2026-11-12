@@ -56,8 +56,8 @@ def compare_numbers(correct_number, user_guess):
             feedback.append("✔")
             remaining.remove(digit)
 
-    for digit in user_guess:
-        if digit in remaining:
+    for i, digit in enumerate(user_guess):
+        if digit != correct_number[i] and digit in remaining:
             feedback.append("☐")
             remaining.remove(digit)
 
@@ -67,12 +67,13 @@ def check_win(correct_number, user_guess):
     return correct_number == user_guess
 
 def main():
-    win = False
+    won = False
     amount_guesses = 0
     guesses = []
     all_feedback = []
     write_welcome()
     correct_number = create_number()
+    print(correct_number)
     while amount_guesses < 12:
         user_guess = get_input("Skriv in din gissning\n> ")
         guesses.append(user_guess)
