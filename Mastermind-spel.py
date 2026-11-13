@@ -101,7 +101,6 @@ def main():
     write_welcome()
     difficulty = get_input("Välj svårighetsgrad (lätt, svår)\n> ", InputType.DIFFICULTY)
     correct_number = create_number(difficulty)
-    print(correct_number)
     while amount_guesses < 12:
         user_guess = get_input("Skriv in din gissning\n> ", InputType.GUESS)
         guesses.append(user_guess)
