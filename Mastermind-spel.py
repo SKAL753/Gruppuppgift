@@ -93,6 +93,25 @@ def compare_numbers(correct_number, user_guess):
 def check_win(correct_number, user_guess):
     return correct_number == user_guess
 
+def game_sequence(correct_number):
+    amount_guesses = 0
+    guesses = []
+    all_feedback = []
+
+    while amount_guesses < 12:
+        user_guess = get_input("Skriv in din gissning\n> ", InputType.GUESS)
+        guesses.append(user_guess)
+        amount_guesses += 1
+
+        feedback = compare_numbers(correct_number, user_guess)
+        all_feedback.append(feedback)
+        write_output(guesses, all_feedback)
+
+        if check_win(correct_number, user_guess):
+            return True
+
+    return False
+
 def main():
     won = False
     amount_guesses = 0
@@ -101,20 +120,12 @@ def main():
     write_welcome()
     difficulty = get_input("Välj svårighetsgrad (lätt, svår)\n> ", InputType.DIFFICULTY)
     correct_number = create_number(difficulty)
-    print(correct_number)
-    while amount_guesses < 12:
-        user_guess = get_input("Skriv in din gissning\n> ", InputType.GUESS)
-        guesses.append(user_guess)
-        amount_guesses += 1
-        feedback = compare_numbers(correct_number, user_guess)
-        all_feedback.append(feedback)
-        write_output(guesses, all_feedback)
-        if check_win(correct_number, user_guess):
-            won = True
-            write_win_message()
-            break
-        
-    if won == False:
+
+    won = game_sequence(correct_number)
+
+    if won:
+        write_win_message()
+    else:
         write_loss_message()
         
         
