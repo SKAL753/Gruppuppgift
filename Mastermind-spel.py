@@ -5,22 +5,23 @@ class InputType(Enum):
     GUESS = 1
     DIFFICULTY = 2
 
-def validate_input(user_input, input_type): 
-        if input_type == InputType.GUESS:
-            user_input_lst = list(user_input)
-            if len(user_input_lst) == 4:
-                for item in user_input_lst:
-                    if not item.isdigit():
-                        return False
-                    if int(item) > 6 or int(item) < 1:
-                        return False
-                return True
-            return False
-        elif input_type == InputType.DIFFICULTY:
-            if user_input == "svår" or user_input == "lätt":
-                return True
+def validate_input(user_input: str, input_type: InputType) -> bool: 
+    if input_type == InputType.GUESS:
+        user_input_lst = list(user_input)
+        if len(user_input_lst) == 4:
+            for item in user_input_lst:
+                if not item.isdigit():
+                    return False
+                if int(item) > 6 or int(item) < 1:
+                    return False
+            return True
+        return False
+    elif input_type == InputType.DIFFICULTY:
+        if user_input == "svår" or user_input == "lätt":
+            return True
+    return False
             
-def get_input(line, input_type):
+def get_input(line: str, input_type: InputType) -> str | list[int]:
     while True:
         user_input = input(line).strip().lower()
         user_input = user_input.replace(" ", "")
@@ -29,7 +30,7 @@ def get_input(line, input_type):
                 return [int(number) for number in user_input]
             return user_input
 
-def write_output(guesses, feedback):
+def write_output(guesses: list[list[int]], feedback: list[str]) -> None:
     print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
     for i in range(12, 0, -1):
         if guesses and feedback and i <= len(guesses):
@@ -38,7 +39,7 @@ def write_output(guesses, feedback):
         else:
             print(f"{i:>2}{".":<20}{"":<20}{""}\n")
 
-def write_welcome():
+def write_welcome() -> None:
     print("=" * 40)
     print("       Välkommen till Mastermind!")
     print("=" * 40)
@@ -59,13 +60,13 @@ def write_welcome():
     print("\nLycka till!")
     print("=" * 40)
 
-def write_win_message():
+def write_win_message() -> None:
     print("Grattis du gissade rätt!")
 
-def write_loss_message():
+def write_loss_message() -> None:
     print("Du förlorade, bättre lycka nästa gång!")
 
-def create_number(difficulty):
+def create_number(difficulty: str) -> list[int]:
     number = []
     if difficulty == "svår":
         for i in range(4):
@@ -74,7 +75,7 @@ def create_number(difficulty):
         number = random.sample(range(1,7), 4)
     return number
 
-def compare_numbers(correct_number, user_guess):
+def compare_numbers(correct_number: list[int], user_guess: list[int]) -> list[str]:
     feedback = []
     remaining = correct_number.copy()
 
@@ -90,10 +91,10 @@ def compare_numbers(correct_number, user_guess):
 
     return feedback
 
-def check_win(correct_number, user_guess):
+def check_win(correct_number: list[int], user_guess: list[int]) -> bool:
     return correct_number == user_guess
 
-def game_sequence(correct_number):
+def game_sequence(correct_number: list[int]) -> bool:
     amount_guesses = 0
     guesses = []
     all_feedback = []
@@ -112,11 +113,7 @@ def game_sequence(correct_number):
 
     return False
 
-def main():
-    won = False
-    amount_guesses = 0
-    guesses = []
-    all_feedback = []
+def main() -> None:
     write_welcome()
     difficulty = get_input("Välj svårighetsgrad (lätt, svår)\n> ", InputType.DIFFICULTY)
     correct_number = create_number(difficulty)
@@ -128,9 +125,6 @@ def main():
     else:
         write_loss_message()
         
-        
-        
-
 
 if __name__ == "__main__":
     main()
