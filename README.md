@@ -11,7 +11,7 @@ Sten sax och påse programmet är klart.
 Ordgissning spelet fortsattes på. Ordlistan delades upp i en annan fil.
 
 
-
+--------------------------------------------------------------------------------------------------------------
 Den bästa personen gjorde ordgissning
 Kodflöde och funktion===
 
@@ -32,3 +32,12 @@ Datalagring===
 Informationen sparas tillfälligt i variabler och listor medan spelet körs. De rätta och felaktiga gissningarna lagras separat i två listor. Det hemliga ordet och antalet försök kvar sparas också i variabler. Själva ordlistan ligger i en separat Python-fil som importeras när programmet startar.
 
 Programmet använder ingen permanent databas.
+
+--------------------------------------------------------------------------------------------------------------
+Mastermind spelet 
+Dokumentation
+Programmet är ett mastermind likande spel med siffror och går ut på att spelaren ska gissa ett fyra siffrigt nummer och får maximalt 12 gissningar.
+Spelsekvensen är:
+Ett välkomstmeddelande skrivs ut och programmet frågar efter svårighetsgrad, lätt eller svår. Sedan skapas ett nummer baserat på vilken svårighetsgrad användaren valt. Vid lätt svårighetsgrad finns inga dubbletter av siffor och vid svår kan dubbletter finnas. Efter det startas spel loopen och en loop körs maximalt 12, en gång per gissning, loopen frågar först efter användarens gissning och lägger till den gissningen i en lista med alla gissningar. Efter det jämför den användarens gissning med det korrekta numret och skapar feedback i form av ✔ eller ☐. ☐ betyder rätt siffra på fel plats och ✔ betyder rätt siffra på rätt plats, feedbacken gers i ingen speciell ordning. Efter det skriver den ut tabellen med alla försök, alla gissningar och feedbacken för alla gissningar. Den kollar till sist om användaren gissade rätt och skriver då ut vinst medddelandet annars fortsätter programmet med loopen tills användaren gissat rätt eller tills antalet försök kvar är slut. 
+
+--------------------------------------------------------------------------------------------------------------
