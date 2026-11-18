@@ -26,7 +26,7 @@ def visa_ord(hemligt_ord, rätt_gissade_bokstäver):
     for bokstav in hemligt_ord:
         if bokstav == " ":
             dolt_ord += "  "
-        elif bokstav in ratt_gissade_bokstaver:
+        elif bokstav in rätt_gissade_bokstäver:
             dolt_ord += bokstav + " "
         else:
             dolt_ord += "_ "
@@ -35,7 +35,7 @@ def visa_ord(hemligt_ord, rätt_gissade_bokstäver):
 
 
 # Visar generell information om spelet
-def visa_spelstatus(antal_forsök_kvar, fel_gissade_bokstäver):
+def visa_spelstatus(antal_försök_kvar, fel_gissade_bokstäver):
     print("Försök kvar:", antal_försök_kvar)
     print("Fel gissade bokstäver:", fel_gissade_bokstäver)
 
@@ -43,7 +43,7 @@ def visa_spelstatus(antal_forsök_kvar, fel_gissade_bokstäver):
 # Kontrollerar om hela ordet är gissat
 def ar_ordet_gissat(hemligt_ord, rätt_gissade_bokstäver):
     return all(
-        bokstav == " " or bokstav in rätt_gissade_bokstäer
+        bokstav == " " or bokstav in rätt_gissade_bokstäver
         for bokstav in hemligt_ord
     )
 
@@ -53,7 +53,9 @@ vald_svårighetsgrad = input(
     "Vilken svårighetsgrad vill du spela på? (1-10): "
 ).strip()
 
-if vald_svårighetsgrad.isdigit() and 1 <= int(vald_svårighetsgrad) <= 10:
+if vald_svårighetsgrad.isdigit() and (
+    1 <= int(vald_svårighetsgrad) <= 10 or int(vald_svårighetsgrad) == 100
+):
 
     hemligt_ord = random.choice(ordlista[int(vald_svårighetsgrad)]).upper()
 
@@ -63,7 +65,7 @@ if vald_svårighetsgrad.isdigit() and 1 <= int(vald_svårighetsgrad) <= 10:
 
     print("\nGissa bokstäverna i ordet!")
 
-    while antal_forsok_kvar > 0:
+    while antal_försök_kvar > 0:
 
         # Visar ordet och spelinformation
         visa_ord(hemligt_ord, rätt_gissade_bokstäver)
@@ -78,7 +80,7 @@ if vald_svårighetsgrad.isdigit() and 1 <= int(vald_svårighetsgrad) <= 10:
         # Hämtar och kontrollerar användarens gissning
         gissad_bokstav = kontrollera_gissning(
             rätt_gissade_bokstäver,
-            fel_gissade_bokstaver
+            fel_gissade_bokstäver
         )
 
         if gissad_bokstav is None:
@@ -89,7 +91,7 @@ if vald_svårighetsgrad.isdigit() and 1 <= int(vald_svårighetsgrad) <= 10:
             print("Rätt gissat!")
 
         else:
-            fel_gissade_bokstaver.append(gissad_bokstav)
+            fel_gissade_bokstäver.append(gissad_bokstav)
             antal_försök_kvar -= 1
             print("Fel gissat!")
 
