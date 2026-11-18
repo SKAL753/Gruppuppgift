@@ -1,11 +1,16 @@
 import random
 from enum import Enum
 
-class InputType(Enum):
+class InputType(Enum): #Enum används för att tydligare visa vad som menas med tex input_type == 1, det blir tydligare om man istället skriver InputType.Guess för då ser man att man kollar om input_type är guess typen. 
     GUESS = 1
     DIFFICULTY = 2
 
 def validate_input(user_input: str, input_type: InputType) -> bool: 
+    '''
+    Den tar in användarens gissning och input typen och veriferar att inputen är giltig. För gissnings typen gör den först om användarens input till
+    en lista och kollar sedan om listan innehåller 4 tecken. Om den gör det kollar den sedan för varje tecken i användarens gissning om det är en siffra
+    och sedan om det är en siffra om siffran inte är större än 6 eller mindre än 1 om användarens gissning klarar alla de krav returnerar den True
+    eftersom inputen var giltig. För svårighetsgrad typen kollar den bara om användarens input är svår eller lätt om returnerar i det fallet True annars False'''
     if input_type == InputType.GUESS:
         user_input_lst = list(user_input)
         if len(user_input_lst) == 4:
@@ -22,6 +27,12 @@ def validate_input(user_input: str, input_type: InputType) -> bool:
     return False
             
 def get_input(line: str, input_type: InputType) -> str | list[int]:
+    '''
+    Den tar in en fråga, line, och input typen, antingen gissning eller svårighetsgrad. Den använder sig av validate_input för att verifiera
+    att inputen från användaren är giltig, om den är giltig returnerar den användarens svar. Den tar in användarens input och tar bort alla mellanrum
+    i början eller slutet av strängen och gör alla bokstäver små. Den tar sedan bort alla mellanslag i strängen och går vidare till att validera inputen.
+    Om inputen är korrekt returnerar den en lista med alla 4 nummer användaren gissade om den är av typen gissning. Om det är av typen svårighetsgrad så 
+    returnerar den bara användarens input som en sträng.'''
     while True:
         user_input = input(line).strip().lower()
         user_input = user_input.replace(" ", "")
@@ -31,6 +42,12 @@ def get_input(line: str, input_type: InputType) -> str | list[int]:
             return user_input
 
 def write_output(guesses: list[list[int]], feedback: list[str]) -> None:
+    '''
+    Skriver ut tabellen vid varje gissning. Den tar in listan med alla gissningar och listan med all feedback. Den kollar sedan så att
+    guesses och feedback finns, om man vill skriva en tom tabell går det pga detta, och kollar så att den indexet i for loopen är mindre
+    eller lika med antalet gissningar. Detta gör så att gissningarna skrivs ut på rätt rad, från den senaste först till den första gissningen
+    sist eftersom den skriver allt uppifrån. I for loopen gör den även om den nuvarande gissningen till en sträng från en lista med integers.
+    För att kunna skriva ut den korrekt.'''
     print(f"{"Försök":<20}{"Gissning":<20}{"Feedback"}\n{"-"*50}")
     for i in range(12, 0, -1):
         if guesses and feedback and i <= len(guesses):
@@ -67,6 +84,10 @@ def write_loss_message() -> None:
     print("Du förlorade, bättre lycka nästa gång!")
 
 def create_number(difficulty: str) -> list[int]:
+    '''
+    Tar in difficulty, lätt eller svår, och skapar numret med antingen inga upprepningar för lätt svårighetsgrad
+    eller eventuellt med upprepningar för svår svårighetsgrad. Den returernar sedan en lista med 4 integers i.
+    '''
     number = []
     if difficulty == "svår":
         for i in range(4):
@@ -76,6 +97,9 @@ def create_number(difficulty: str) -> list[int]:
     return number
 
 def compare_numbers(correct_number: list[int], user_guess: list[int]) -> list[str]:
+    '''
+    Jämför det korrekta numret med användarens gissning och returnerar en list med feedbacken som syns i spelet i form av ✔ för
+    varje rätt siffra på rätt plats och ☐ för varje rätt siffra på fel plats i ingen speciell ordning.'''
     feedback = []
     remaining = correct_number.copy()
 
@@ -92,9 +116,18 @@ def compare_numbers(correct_number: list[int], user_guess: list[int]) -> list[st
     return feedback
 
 def check_win(correct_number: list[int], user_guess: list[int]) -> bool:
+    '''
+    Kollar om användaren vunnit. Den tar in det korrekta numret och användarens gissning och jämför den. Den returnerar sedan True vid
+     vinst och False annars. '''
     return correct_number == user_guess
 
 def game_sequence(correct_number: list[int]) -> bool:
+    '''
+    Det här är spel loopen, den som körs under spelets gång för alla tolv gissningar. 
+    Den frågar först efter användarens gissning med get_input funktionen och lägger sedan till gissningen till 
+    listan med alla gissningar. Den skapar sedan feedbacken och lägger till den till listan med all feedback. Sedan skriver den ut
+    tabellen och kollar om användaren vann och returnerar då True annars fortsätter den och om alla gissningar tar slut returnerar den
+    False.'''
     amount_guesses = 0
     guesses = []
     all_feedback = []
@@ -114,6 +147,11 @@ def game_sequence(correct_number: list[int]) -> bool:
     return False
 
 def main() -> None:
+    '''
+    Den här körs i början av spelet och styr hela spelgången. Den börjar med att skriva ut välkomstmeddelandet och fråga efter svårighetsgraden med get_input och typen difficulty.
+    Den skapar sedan ett nummer med create_number och skickar in svårighetsgraden som ett argument.
+    Sedan kör den game_sequence som returnerar True om användaren vinner och annars False därför sätter den won = game_sequence. Sedan kollar om användaren
+    vann eller inte genom att kolla om won == True eller inte och skriver ut rätt meddelandet för antingen vinst eller förlust.'''
     write_welcome()
     difficulty = get_input("Välj svårighetsgrad (lätt, svår)\n> ", InputType.DIFFICULTY)
     correct_number = create_number(difficulty)
@@ -124,8 +162,8 @@ def main() -> None:
         write_win_message()
     else:
         write_loss_message()
-        
+    
 
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": #Den gör så att main funktionen körs om programmet startas från denna fil, eftersom hela programmet bara är en fil startas main alltid vid start av programmet.
+    main()                 #När en fil körs i python får variabeln __name__ ett värde, och om programet startades från den filen blir värdet __main__, jag utnyttjar detta för att automatiskt köra main funktionen vid start av programmet.
 
