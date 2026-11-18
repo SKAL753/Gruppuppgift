@@ -1,10 +1,10 @@
 
-# Tar ordlista från annan fil, annars blir det galet med bloat.
+# Tar ordlista från annan fil, annars blir det galet med bloat i denna fil, 103 vs 453 rader i filen man jobbar med.
 from ordlista import ordlista
 import random
 
 
-# Inmatningssäkerhet
+# Inmatningssäkerhet, kollar att man bara skriver en bokstav som inte redan är gissad.
 def kontrollera_gissning(rätt_gissade_bokstäver, fel_gissade_bokstäver):
     gissad_bokstav = input("Gissa en bokstav: ").strip().upper()
 
@@ -19,7 +19,7 @@ def kontrollera_gissning(rätt_gissade_bokstäver, fel_gissade_bokstäver):
     return gissad_bokstav
 
 
-# Bygger upp och visar ordet med dolda och gissade bokstäver
+# Bygger upp och visar ordet med dolda och gissade bokstäver, detta upprepas vid varje iteration för förtydlighet vid spelande
 def visa_ord(hemligt_ord, rätt_gissade_bokstäver):
     dolt_ord = ""
 
@@ -34,7 +34,7 @@ def visa_ord(hemligt_ord, rätt_gissade_bokstäver):
     print("\nOrdet:", dolt_ord)
 
 
-# Visar generell information om spelet
+# Visar generell information om spelet, denna info spelas upp under spelets gång vid varje iteration
 def visa_spelstatus(antal_försök_kvar, fel_gissade_bokstäver):
     print("Försök kvar:", antal_försök_kvar)
     print("Fel gissade bokstäver:", fel_gissade_bokstäver)
@@ -48,7 +48,7 @@ def ar_ordet_gissat(hemligt_ord, rätt_gissade_bokstäver):
     )
 
 
-# Svårighetsgrad är proportionell med längden av orden som ska gissas
+# Svårighetsgrad är proportionell med längden av orden som ska gissas, hemlig svårighetsgrad nummer 100 som är super svår med långa ord.
 vald_svårighetsgrad = input(
     "Vilken svårighetsgrad vill du spela på? (1-10): "
 ).strip()
@@ -67,17 +67,17 @@ if vald_svårighetsgrad.isdigit() and (
 
     while antal_försök_kvar > 0:
 
-        # Visar ordet och spelinformation
+        # Visar ordet och spelinformation, funktionen som anropas är definerad tidigare.
         visa_ord(hemligt_ord, rätt_gissade_bokstäver)
         visa_spelstatus(antal_försök_kvar, fel_gissade_bokstäver)
 
-        # Kollar om alla bokstäver är gissade
+        # Kollar om alla bokstäver är gissade, isånafall säger den grattis och visar ordet som va den rundan.
         if ar_ordet_gissat(hemligt_ord, rätt_gissade_bokstäver):
             print("\nGrattis! Du gissade rätt!")
             print("Ordet var:", hemligt_ord)
             break
 
-        # Hämtar och kontrollerar användarens gissning
+        # Hämtar och kontrollerar användarens gissning genom att anropa funktionen med villkoren rätt gissade och fel gissade.
         gissad_bokstav = kontrollera_gissning(
             rätt_gissade_bokstäver,
             fel_gissade_bokstäver
