@@ -436,6 +436,6 @@ ordlista = {
     7: words_7,
     8: words_8,
     9: words_9,
-    10: words_10
+    10: words_10,
     11: words_superlong
 }
