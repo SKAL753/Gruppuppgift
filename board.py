@@ -40,6 +40,11 @@ class Board:
 
                         if self.grid[row + row_offset][column + column_offset].is_mine:
                             current_cell.neighboring_mines += 1
-
+    
+    def toggle_flagged(self, coordinates):
+        y, x = coordinates
+        current_cell = self.grid[y][x]
+        if not (current_cell.is_revealed):
+            current_cell.is_flagged = not current_cell.is_flagged
 
 
