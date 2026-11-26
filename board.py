@@ -16,8 +16,14 @@ class Board:
                 row.append(Cell())
             grid.append(row)
         return grid
+
+    def create_mine_positions(self) -> list[tuple[int, int]]:
+        positions = [(i, j) for i in range(self.size) for j in range(self.size)]
+        mine_positions = random.sample(positions, self.number_of_mines)
+        return mine_positions
     
-    def add_mines(self, mine_positions: list[tuple[int, int]]) -> None:
+    def add_mines(self) -> None:
+        mine_positions = self.create_mine_positions()
         for row, col in mine_positions:
             self.grid[row][col].is_mine = True
     
