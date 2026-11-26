@@ -1,5 +1,5 @@
-def print_grid(self) -> None:
-    for row in self.grid:
+def print_grid(board) -> None:
+    for row in board.grid:
         for cell in row:
             print(cell, end=" ")
         print()

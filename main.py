@@ -15,7 +15,7 @@ def main():
     board = Board(SIZE, MINE_COUNT)
     board.add_mines(mine_positions)
     board.count_adjacent_mines()
-    ui.print_grid()
+    ui.print_grid(board)
 
 if __name__ == "__main__":
     main()
