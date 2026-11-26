@@ -15,12 +15,12 @@ class Cell:
         return "[ ]"
 
 class Board:
-    def __init__(self: Board, size: int, number_of_mines: int) -> None:
+    def __init__(self, size: int, number_of_mines: int) -> None:
         self.size = size
         self.number_of_mines = number_of_mines
         self.grid = self.create_cells(size)
     
-    def create_cells(self: Board, size: int) -> list[list[Cell]]:
+    def create_cells(self, size: int) -> list[list[Cell]]:
         grid = []
         for i in range(size):
             row = []
@@ -29,7 +29,7 @@ class Board:
             grid.append(row)
         return grid
     
-    def add_mines(self: Board, mine_positions: list[tuple[int, int]]) -> None:
+    def add_mines(self, mine_positions: list[tuple[int, int]]) -> None:
         for row, col in mine_positions:
             self.grid[row][col].is_mine = True
     
@@ -49,7 +49,7 @@ class Board:
 
                         
 
-    def print_grid(self: Board) -> None:
+    def print_grid(self) -> None:
         for row in self.grid:
             for cell in row:
                 print(cell, end=" ")
