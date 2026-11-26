@@ -33,8 +33,21 @@ class Board:
         for row, col in mine_positions:
             self.grid[row][col].is_mine = True
     
-    def count_adjacent_mines():
-        pass
+    def count_adjacent_mines(self):
+        for row in range(self.size):
+            for column in range(self.size):
+                current_cell = self.grid[row][column]
+
+                if current_cell.is_mine:
+                    continue
+
+                for row_offset in (-1,0,1):
+                    for column_offset in (-1,0,1):
+
+                        if row_offset == 0 and column_offset == 0:
+                            continue
+
+                        
 
     def print_grid(self: Board) -> None:
         for row in self.grid:
