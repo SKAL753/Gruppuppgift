@@ -6,12 +6,15 @@ MINE_COUNT = 16
 class Cell:
     def __init__(self):
         self.is_mine = False
-        self.is_revealed = False
+        self.is_revealed = True
         self.is_flagged = False
         self.neighboring_mines = 0
     def __str__(self):
         if self.is_mine:
             return "[*]"
+        if self.is_revealed:
+            if self.neighboring_mines > 0:
+                return f"[{self.neighboring_mines}]"
         return "[ ]"
 
 class Board:
@@ -47,7 +50,12 @@ class Board:
                         if row_offset == 0 and column_offset == 0:
                             continue
 
-                        
+                        if not (0 <= row + row_offset < self.size and 0 <= column + column_offset < self.size):
+                            continue 
+
+                        if self.grid[row + row_offset][column + column_offset].is_mine:
+                            current_cell.neighboring_mines += 1
+
 
     def print_grid(self) -> None:
         for row in self.grid:
@@ -65,6 +73,7 @@ mine_positions = create_mine_positions(SIZE, MINE_COUNT)
 
 board = Board(SIZE, MINE_COUNT)
 board.add_mines(mine_positions)
+board.count_adjacent_mines()
 board.print_grid()
     
 
