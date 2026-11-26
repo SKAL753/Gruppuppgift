@@ -1,5 +1,5 @@
 from board import Board
-import random
+import random, ui
 
 SIZE = 9
 MINE_COUNT = 16
@@ -15,7 +15,7 @@ def main():
     board = Board(SIZE, MINE_COUNT)
     board.add_mines(mine_positions)
     board.count_adjacent_mines()
-    board.print_grid()
+    ui.print_grid()
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,7 @@
 import random
 from cell import Cell
 
+
 class Board:
     def __init__(self, size: int, number_of_mines: int) -> None:
         self.size = size
@@ -40,11 +41,5 @@ class Board:
                         if self.grid[row + row_offset][column + column_offset].is_mine:
                             current_cell.neighboring_mines += 1
 
-
-    def print_grid(self) -> None:
-        for row in self.grid:
-            for cell in row:
-                print(cell, end=" ")
-            print()
 
 
