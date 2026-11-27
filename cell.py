@@ -12,4 +12,6 @@ class Cell:
         if self.is_revealed:
             if self.neighboring_mines > 0:
                 return f"[{self.neighboring_mines}]"
+            else:
+                return "[-]"
         return "[ ]"

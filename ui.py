@@ -11,7 +11,6 @@ def get_input(line: str, size: int, input_type = None) -> tuple[int]:
             if verify_input_action(user_input):
                 return user_input
         if verify_input_coordinates(user_input, size):
-            print("Blev godkänd")
             return tuple(map(int, user_input))
 
 def verify_input_coordinates(user_input: str, size: int) -> bool:

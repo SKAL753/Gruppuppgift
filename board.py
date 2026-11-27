@@ -48,25 +48,31 @@ class Board:
                             current_cell.neighboring_mines += 1
     
     def toggle_flagged(self, coordinates):
-        y, x = coordinates
-        current_cell = self.grid[y][x]
+        row, column = coordinates
+        current_cell = self.grid[row][column]
         if not (current_cell.is_revealed):
             current_cell.is_flagged = not current_cell.is_flagged
 
     def reveal_cell(self, coordinates):
-        y, x = coordinates
-        current_cell = self.grid[y][x]
-        if current_cell.is_flagged:
-            return
+        row, column = coordinates
+        current_cell = self.grid[row][column]
+        if current_cell.is_flagged or current_cell.is_revealed:
+            return False
+        current_cell.is_revealed = True
+        return current_cell.is_mine
+        
         
 
-    def cell_reveal_algoritm(self, coordinates):
+    def cell_reveal_algorithm(self, coordinates):
         row, column = coordinates
         current_cell = self.grid[row][column]
         if current_cell.is_revealed:
             return
 
         self.reveal_cell(coordinates)
+
+        if current_cell.is_mine:
+            return
 
         if current_cell.neighboring_mines > 0:
                 return
@@ -78,4 +84,4 @@ class Board:
                     continue
 
                 if (0 <= row + row_offset < self.size and 0 <= column + column_offset < self.size):
-                    self.cell_reveal_algoritm((row + row_offset, column + column_offset))           
+                        self.cell_reveal_algorithm((row + row_offset, column + column_offset))           
