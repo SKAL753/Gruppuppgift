@@ -53,4 +53,29 @@ class Board:
         if not (current_cell.is_revealed):
             current_cell.is_flagged = not current_cell.is_flagged
 
+    def reveal_cell(self, coordinates):
+        y, x = coordinates
+        current_cell = self.grid[y][x]
+        if current_cell.is_flagged:
+            return
+        
 
+    def cell_reveal_algoritm(self, coordinates):
+        row, column = coordinates
+        current_cell = self.grid[row][column]
+        if current_cell.is_revealed:
+            return
+
+        self.reveal_cell(coordinates)
+
+        if current_cell.neighboring_mines > 0:
+                return
+        
+        for row_offset in (-1,0,1):
+            for column_offset in (-1,0,1):
+
+                if row_offset == 0 and column_offset == 0:
+                    continue
+
+                if (0 <= row + row_offset < self.size and 0 <= column + column_offset < self.size):
+                    self.cell_reveal_algoritm((row + row_offset, column + column_offset))           

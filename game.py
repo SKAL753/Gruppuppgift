@@ -16,6 +16,8 @@ class Game:
             selected_action = ui.get_input("\nVill du flagga [f] eller avslöja [r]\n> ", SIZE, "action")
             if selected_action == "f":
                 self.board.toggle_flagged(selected_coordinates)
+            elif selected_action == "r":
+                pass
             ui.print_grid(self.board)
 
     def setup_board(self):
