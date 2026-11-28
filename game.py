@@ -1,5 +1,5 @@
 from board import Board
-import random, ui
+import ui
 
 SIZE = 9
 MINE_COUNT = 16
@@ -10,7 +10,7 @@ class Game:
         self.board = Board(SIZE, MINE_COUNT)
         self.is_running = True
 
-    def game_sequence(self) -> None:
+    def game_sequence(self) -> bool:
         while self.is_running:
             selected_coordinates = ui.get_input("\nSkriv in två koordinater av formen: 12 | 1 2 | 1,2\n> ", SIZE)
             selected_action = ui.get_input("\nVill du flagga [f] eller avslöja [r]\n> ", SIZE, "action")
@@ -19,8 +19,12 @@ class Game:
             elif selected_action == "r":
                 self.reveal_selected_cell(selected_coordinates)
             ui.print_grid(self.board)
+            
+            if self.check_win():
+                return True
+        return False
 
-    def reveal_selected_cell(self, coordinates: tuple[int]) -> None:
+    def reveal_selected_cell(self, coordinates: tuple[int, int]) -> None:
         row, column = coordinates
         cell = self.board.grid[row][column]
 
@@ -34,11 +38,30 @@ class Game:
 
         self.board.cell_reveal_algorithm(coordinates)
 
-    def setup_board(self):
+    def setup_board(self) -> None:
         self.board.add_mines()
         self.board.count_adjacent_mines()
 
     def start(self) -> None:
         self.setup_board()
         ui.print_grid(self.board)
-        self.game_sequence()
+        if self.game_sequence():
+            self.end_game_win()
+        else:
+            self.end_game_loss()
+
+
+    def check_win(self) -> bool:
+        for row in self.board.grid:
+            for cell in row:
+                if not cell.is_mine and not cell.is_revealed:
+                    return False
+        return True
+
+    def end_game_win(self) -> None:
+        self.is_running = False
+        ui.print_win()
+
+    def end_game_loss(self) -> None:
+        self.is_running = False
+        ui.print_loss()

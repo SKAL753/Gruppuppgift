@@ -22,3 +22,9 @@ def verify_input_coordinates(user_input: str, size: int) -> bool:
 def verify_input_action(user_input: str) -> bool:
     if user_input == "f" or user_input == "r":
         return True
+
+def print_win():
+    print("Du vann!")
+
+def print_loss():
+    print("Bättre lycka nästa gång!")

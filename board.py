@@ -27,7 +27,7 @@ class Board:
         for row, col in mine_positions:
             self.grid[row][col].is_mine = True
     
-    def count_adjacent_mines(self):
+    def count_adjacent_mines(self) -> None:
         for row in range(self.size):
             for column in range(self.size):
                 current_cell = self.grid[row][column]
@@ -47,13 +47,13 @@ class Board:
                         if self.grid[row + row_offset][column + column_offset].is_mine:
                             current_cell.neighboring_mines += 1
     
-    def toggle_flagged(self, coordinates):
+    def toggle_flagged(self, coordinates: tuple[int, int]) -> None:
         row, column = coordinates
         current_cell = self.grid[row][column]
         if not (current_cell.is_revealed):
             current_cell.is_flagged = not current_cell.is_flagged
 
-    def reveal_cell(self, coordinates):
+    def reveal_cell(self, coordinates: tuple[int, int]) -> bool:
         row, column = coordinates
         current_cell = self.grid[row][column]
         if current_cell.is_flagged or current_cell.is_revealed:
@@ -63,7 +63,7 @@ class Board:
         
         
 
-    def cell_reveal_algorithm(self, coordinates):
+    def cell_reveal_algorithm(self, coordinates: tuple[int, int]) -> None:
         row, column = coordinates
         current_cell = self.grid[row][column]
         if current_cell.is_revealed:

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <main class="game-container">
+
+        <header class="header">
+            <div class="title-section">
+                <span class="subtitle">CLASSIC GAME</span>
+                <h1>Minesweeper</h1>
+                <p>Find the mines. Stay alive.</p>
+            </div>
+
+            <div class="game-status">
+                <span class="status-indicator"></span>
+                <span>Ready to play</span>
+            </div>
+        </header>
+
+        <section class="game-panel">
+
+            <div class="game-info">
+                <div class="info-card">
+                    <span class="info-label">MINES</span>
+                    <span class="info-value" id="mine-count">016</span>
+                </div>
+
+                <button class="restart-button" id="restart-button">
+                    ↻
+                </button>
+
+                <div class="info-card">
+                    <span class="info-label">TIME</span>
+                    <span class="info-value" id="timer">000</span>
+                </div>
+            </div>
+
+            <div class="board-container">
+                <div class="board" id="game-board">
+                    <!-- Spelplanen genereras av JavaScript -->
+                </div>
+            </div>
+
+            <div class="game-message" id="game-message">
+                Good luck!
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <span>MINESWEEPER</span>
+            <span>9 × 9 GRID · 16 MINES</span>
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
